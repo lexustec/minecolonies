@@ -34,6 +34,6 @@ public class PathNavigateRegistry implements IPathNavigateRegistry
         final List<Predicate<MobEntity>> predicates = new ArrayList<>(registry.keySet());
         Collections.reverse(predicates);
 
-        return predicates.stream().filter(predicate -> predicate.test(entityLiving)).findFirst().map(predicate -> registry.get(predicate)).orElse(DEFAULT).apply(entityLiving);
+        return predicates.stream().filter(predicate -> predicate.test(entityLiving)).findFirst().map(registry::get).orElse(DEFAULT).apply(entityLiving);
     }
 }

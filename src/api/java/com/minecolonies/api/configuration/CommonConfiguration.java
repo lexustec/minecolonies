@@ -223,6 +223,9 @@ public class CommonConfiguration extends AbstractConfiguration
     public final ForgeConfigSpec.ConfigValue<List<? extends String>> woundingshot;
     public final ForgeConfigSpec.ConfigValue<List<? extends String>> deadlyaim;
 
+    public final ForgeConfigSpec.BooleanValue autoCreatePathsEnabled;
+    public final ForgeConfigSpec.IntValue maxTrackingAge;
+
     /**
      * Builds common configuration.
      *
@@ -832,6 +835,11 @@ public class CommonConfiguration extends AbstractConfiguration
         this.deadlyaim = defineList(builder, "deadlyaim",
           Collections.singletonList("minecraft:flint*256"),
           s -> s instanceof String);
+
+        swapToCategory(builder, "autoPathMaking");
+
+        this.autoCreatePathsEnabled = defineBoolean(builder, "enabled", true);
+        this.maxTrackingAge = defineInteger(builder, "maxAge", 50000);
 
         finishCategory(builder);
     }
