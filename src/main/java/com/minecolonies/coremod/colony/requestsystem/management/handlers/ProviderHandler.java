@@ -2,6 +2,7 @@ package com.minecolonies.coremod.colony.requestsystem.management.handlers;
 
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableList;
+import com.minecolonies.api.colony.requestsystem.management.handlers.IProviderHandler;
 import com.minecolonies.api.colony.requestsystem.manager.IRequestManager;
 import com.minecolonies.api.colony.requestsystem.resolver.IRequestResolverProvider;
 import com.minecolonies.api.colony.requestsystem.token.IToken;

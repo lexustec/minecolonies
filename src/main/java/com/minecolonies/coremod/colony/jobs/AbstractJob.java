@@ -9,9 +9,8 @@ import com.minecolonies.api.colony.requestsystem.StandardFactoryController;
 import com.minecolonies.api.colony.requestsystem.token.IToken;
 import com.minecolonies.api.entity.ai.statemachine.states.AIWorkerState;
 import com.minecolonies.api.entity.citizen.AbstractEntityCitizen;
-import com.minecolonies.api.entity.citizen.citizenhandlers.ICitizenSkillHandler;
-import com.minecolonies.api.util.NBTUtils;
 import com.minecolonies.api.util.Log;
+import com.minecolonies.api.util.NBTUtils;
 import com.minecolonies.coremod.colony.Colony;
 import com.minecolonies.coremod.entity.ai.basic.AbstractAISkeleton;
 import net.minecraft.entity.ai.goal.GoalSelector;
@@ -434,14 +433,17 @@ public abstract class AbstractJob<AI extends AbstractAISkeleton<J>, J extends Ab
     }
 
     @Override
-    public int getDiseaseModifier()
-    {
+    public int getDiseaseModifier() {
         return 1;
     }
 
     @Override
-    public void onRemoval()
-    {
+    public void onRemoval() {
 
+    }
+
+    @Override
+    public boolean performsAutomaticPathMaking() {
+        return false;
     }
 }

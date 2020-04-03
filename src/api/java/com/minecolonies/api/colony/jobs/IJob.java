@@ -6,7 +6,6 @@ import com.minecolonies.api.colony.IColony;
 import com.minecolonies.api.colony.jobs.registry.JobEntry;
 import com.minecolonies.api.colony.requestsystem.token.IToken;
 import com.minecolonies.api.entity.citizen.AbstractEntityCitizen;
-import com.minecolonies.api.entity.citizen.citizenhandlers.ICitizenSkillHandler;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.ai.goal.GoalSelector;
 import net.minecraft.item.ItemStack;
@@ -219,6 +218,7 @@ public interface IJob<AI extends Goal> extends INBTSerializable<CompoundNBT>
 
     /**
      * Disease modifier of the job.
+     *
      * @return the modifier of the job.
      */
     int getDiseaseModifier();
@@ -227,4 +227,16 @@ public interface IJob<AI extends Goal> extends INBTSerializable<CompoundNBT>
      * When job removed (death of citizen or job change).
      */
     void onRemoval();
+
+    /**
+     * This indicates to a citizen that he should participate in triggering automatic path making.
+     * It should be obvious that most citizens just stand around and as such they would not contribute meaningfully to the
+     * statistics that cause the paths to be considered.
+     * <p>
+     * As such only jobs who move around a lot. Like deliveryman, fisher, miners, lumberjacks etc, should be considered for this
+     * feature.
+     *
+     * @return {@code True} to indicate that this job should participate in automatic path making, {@code false} when not.
+     */
+    boolean performsAutomaticPathMaking();
 }

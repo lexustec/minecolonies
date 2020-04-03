@@ -1353,26 +1353,27 @@ public final class ColonyView implements IColonyView
     }
 
     @Override
-    public IColonyPackageManager getPackageManager()
-    {
+    public IColonyPackageManager getPackageManager() {
         return null;
     }
 
     @Override
-    public IProgressManager getProgressManager()
-    {
+    public IProgressManager getProgressManager() {
         return null;
     }
 
     @Override
-    public boolean isRaiding()
-    {
+    public IPathBuildingManager getPathBuildingManager() {
+        return null;
+    }
+
+    @Override
+    public boolean isRaiding() {
         return this.isUnderRaid;
     }
 
     @Override
-    public long getMercenaryUseTime()
-    {
+    public long getMercenaryUseTime() {
         return mercenaryLastUseTime;
     }
 

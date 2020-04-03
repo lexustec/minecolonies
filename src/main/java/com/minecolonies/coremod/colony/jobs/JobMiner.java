@@ -50,14 +50,17 @@ public class JobMiner extends AbstractJobStructure
      */
     @NotNull
     @Override
-    public AbstractAISkeleton<JobMiner> generateAI()
-    {
+    public AbstractAISkeleton<JobMiner> generateAI() {
         return new EntityAIStructureMiner(this);
     }
 
     @Override
-    public int getDiseaseModifier()
-    {
+    public int getDiseaseModifier() {
         return 2;
+    }
+
+    @Override
+    public boolean performsAutomaticPathMaking() {
+        return true;
     }
 }

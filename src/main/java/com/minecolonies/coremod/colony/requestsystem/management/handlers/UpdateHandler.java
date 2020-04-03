@@ -2,6 +2,7 @@ package com.minecolonies.coremod.colony.requestsystem.management.handlers;
 
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.Lists;
+import com.minecolonies.api.colony.requestsystem.management.handlers.IUpdateHandler;
 import com.minecolonies.api.colony.requestsystem.manager.IRequestManager;
 import com.minecolonies.coremod.colony.requestsystem.management.IStandardRequestManager;
 import com.minecolonies.coremod.colony.requestsystem.management.handlers.update.IUpdateStep;

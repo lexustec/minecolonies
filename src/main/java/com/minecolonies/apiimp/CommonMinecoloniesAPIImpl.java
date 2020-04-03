@@ -18,6 +18,7 @@ import com.minecolonies.api.compatibility.IFurnaceRecipes;
 import com.minecolonies.api.configuration.Configuration;
 import com.minecolonies.api.entity.ai.registry.IMobAIRegistry;
 import com.minecolonies.api.entity.pathfinding.registry.IPathNavigateRegistry;
+import com.minecolonies.api.paths.IPathHandlingRegistry;
 import com.minecolonies.api.research.IGlobalResearchTree;
 import com.minecolonies.api.util.constant.Constants;
 import com.minecolonies.coremod.MineColonies;
@@ -76,15 +77,18 @@ public class CommonMinecoloniesAPIImpl implements IMinecoloniesAPI
 
     @Override
     @NotNull
-    public IPathNavigateRegistry getPathNavigateRegistry()
-    {
+    public IPathNavigateRegistry getPathNavigateRegistry() {
         return pathNavigateRegistry;
     }
 
     @Override
+    public IPathHandlingRegistry getPathHandlingRegistry() {
+        return null;
+    }
+
+    @Override
     @NotNull
-    public IBuildingDataManager getBuildingDataManager()
-    {
+    public IBuildingDataManager getBuildingDataManager() {
         return buildingDataManager;
     }
 

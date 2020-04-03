@@ -315,8 +315,7 @@ public abstract class AbstractPathJob implements Callable<Path>
     {
         double cost = Math.sqrt(dPos.getX() * dPos.getX() + dPos.getY() * dPos.getY() + dPos.getZ() * dPos.getZ());
 
-        if (dPos.getY() != 0 && (dPos.getX() != 0 || dPos.getZ() != 0) && !(Math.abs(dPos.getY()) <= 1 && world.getBlockState(blockPos).getBlock() instanceof StairsBlock))
-        {
+        if (dPos.getY() != 0 && (dPos.getX() != 0 || dPos.getZ() != 0) && !(Math.abs(dPos.getY()) <= 1 && (world.getBlockState(blockPos.down()).getBlock() instanceof StairsBlock) || world.getBlockState(blockPos.down()).getBlock() instanceof SlabBlock)) {
             //  Tax the cost for jumping, dropping
             cost *= JUMP_DROP_COST * Math.abs(dPos.getY());
         }
@@ -928,7 +927,7 @@ public abstract class AbstractPathJob implements Callable<Path>
         {
             double dif = bb.getEnd(Direction.Axis.Y);
             final double parentY = target.getCollisionShape(world, pos).getEnd(Direction.Axis.Y);
-            dif = dif + 1 - parentY;
+            dif = 1 - dif + parentY;
             if (dif < MAX_JUMP_HEIGHT)
             {
                 return pos.getY() + 1;

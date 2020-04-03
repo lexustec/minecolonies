@@ -3,10 +3,7 @@ package com.minecolonies.coremod.colony;
 import com.google.common.collect.ImmutableList;
 import com.ldtteam.structurize.util.LanguageHandler;
 import com.minecolonies.api.blocks.ModBlocks;
-import com.minecolonies.api.colony.HappinessData;
-import com.minecolonies.api.colony.ICitizenData;
-import com.minecolonies.api.colony.IColony;
-import com.minecolonies.api.colony.IColonyTagCapability;
+import com.minecolonies.api.colony.*;
 import com.minecolonies.api.colony.buildings.IBuilding;
 import com.minecolonies.api.colony.managers.interfaces.*;
 import com.minecolonies.api.colony.permissions.Action;
@@ -55,13 +52,13 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 
+import static com.minecolonies.api.colony.ColonyState.*;
 import static com.minecolonies.api.entity.ai.statemachine.tickratestatemachine.TickRateConstants.MAX_TICKRATE;
 import static com.minecolonies.api.util.constant.ColonyConstants.*;
 import static com.minecolonies.api.util.constant.Constants.*;
 import static com.minecolonies.api.util.constant.NbtTagConstants.*;
 import static com.minecolonies.api.util.constant.TranslationConstants.*;
 import static com.minecolonies.coremod.MineColonies.CLOSE_COLONY_CAP;
-import static com.minecolonies.coremod.colony.ColonyState.*;
 
 /**
  * This class describes a colony and contains all the data and methods for
@@ -109,6 +106,8 @@ public class Colony implements IColony
      * Citizen manager of the colony.
      */
     private final ICitizenManager citizenManager = new CitizenManager(this);
+
+    private final com.minecolonies.api.colony.managers.interfaces.IPathBuildingManager IPathBuildingManager = new PathBuildingManager(this);
 
     /**
      * Colony happiness manager.
@@ -205,7 +204,7 @@ public class Colony implements IColony
     /**
      * The request manager assigned to the colony.
      */
-    private IResearchManager researchManager = new ResearchManager();;
+    private IResearchManager researchManager = new ResearchManager();
 
     /**
      * The NBTTag compound of the colony itself.
@@ -396,6 +395,7 @@ public class Colony implements IColony
         eventManager.onColonyTick(this);
         buildingManager.onColonyTick(this);
         workManager.onColonyTick(this);
+        IPathBuildingManager.onColonyTick(this);
 
         updateChildTime();
         return false;
@@ -1416,9 +1416,13 @@ public class Colony implements IColony
      * @return the manager.
      */
     @Override
-    public IProgressManager getProgressManager()
-    {
+    public IProgressManager getProgressManager() {
         return progressManager;
+    }
+
+    @Override
+    public IPathBuildingManager getPathBuildingManager() {
+        return IPathBuildingManager;
     }
 
     /**
@@ -1426,8 +1430,7 @@ public class Colony implements IColony
      *
      * @return the list.
      */
-    public ImmutableList<PlayerEntity> getVisitingPlayers()
-    {
+    public ImmutableList<PlayerEntity> getVisitingPlayers() {
         return ImmutableList.copyOf(visitingPlayers);
     }
 

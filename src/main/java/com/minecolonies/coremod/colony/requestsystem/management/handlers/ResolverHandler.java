@@ -2,6 +2,7 @@ package com.minecolonies.coremod.colony.requestsystem.management.handlers;
 
 import com.google.common.collect.Lists;
 import com.google.common.reflect.TypeToken;
+import com.minecolonies.api.colony.requestsystem.management.handlers.IResolverHandler;
 import com.minecolonies.api.colony.requestsystem.manager.IRequestManager;
 import com.minecolonies.api.colony.requestsystem.request.IRequest;
 import com.minecolonies.api.colony.requestsystem.request.RequestState;

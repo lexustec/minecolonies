@@ -163,8 +163,12 @@ public class JobLumberjack extends AbstractJob
      */
     @NotNull
     @Override
-    public AbstractAISkeleton<JobLumberjack> generateAI()
-    {
+    public AbstractAISkeleton<JobLumberjack> generateAI() {
         return new EntityAIWorkLumberjack(this);
+    }
+
+    @Override
+    public boolean performsAutomaticPathMaking() {
+        return true;
     }
 }

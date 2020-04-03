@@ -8,7 +8,6 @@ import com.minecolonies.api.colony.requestsystem.requester.IRequester;
 import com.minecolonies.api.colony.workorders.IWorkManager;
 import com.minecolonies.api.entity.citizen.AbstractEntityCitizen;
 import com.minecolonies.api.research.IResearchManager;
-import com.minecolonies.coremod.colony.ColonyState;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -217,8 +216,11 @@ public interface IColony
 
     IProgressManager getProgressManager();
 
+    IPathBuildingManager getPathBuildingManager();
+
     /**
      * Add a visiting player.
+     *
      * @param player the player.
      */
     void addVisitingPlayer(final PlayerEntity player);

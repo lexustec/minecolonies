@@ -86,8 +86,12 @@ public class JobRanger extends AbstractJobGuard
      * @return The model to use.
      */
     @Override
-    public BipedModelType getModel()
-    {
+    public BipedModelType getModel() {
         return BipedModelType.ARCHER_GUARD;
+    }
+
+    @Override
+    public boolean performsAutomaticPathMaking() {
+        return true;
     }
 }

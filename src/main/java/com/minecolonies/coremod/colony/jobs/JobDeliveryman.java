@@ -327,8 +327,12 @@ public class JobDeliveryman extends AbstractJob
     /**
      * Check if the dman can currently accept requests.
      */
-    public boolean isActive()
-    {
+    public boolean isActive() {
         return this.active;
+    }
+
+    @Override
+    public boolean performsAutomaticPathMaking() {
+        return true;
     }
 }

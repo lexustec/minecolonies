@@ -1196,18 +1196,19 @@ public class EntityCitizen extends AbstractEntityCitizen
 
     private void onLivingUpdateServer()
     {
-        if (getOffsetTicks() % TICKS_20 == 0)
-        {
+        if (getOffsetTicks() % TICKS_20 == 0) {
             onPrimaryLivingUpdateTick();
         }
 
-        citizenDiseaseHandler.tick();
-        if (citizenJobHandler.getColonyJob() != null || !CompatibilityUtils.getWorldFromCitizen(this).isDaytime())
-        {
-            citizenStuckHandler.tick();
+        if (citizenData != null) {
+            if (citizenData.getJob() != null && citizenData.getJob().performsAutomaticPathMaking())
+                citizenData.getColony().getPathBuildingManager().onCitizenTick(this);
         }
-        else
-        {
+
+        citizenDiseaseHandler.tick();
+        if (citizenJobHandler.getColonyJob() != null || !CompatibilityUtils.getWorldFromCitizen(this).isDaytime()) {
+            citizenStuckHandler.tick();
+        } else {
             updateCitizenStatus();
         }
 

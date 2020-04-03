@@ -16,6 +16,7 @@ import com.minecolonies.api.compatibility.IFurnaceRecipes;
 import com.minecolonies.api.configuration.Configuration;
 import com.minecolonies.api.entity.ai.registry.IMobAIRegistry;
 import com.minecolonies.api.entity.pathfinding.registry.IPathNavigateRegistry;
+import com.minecolonies.api.paths.IPathHandlingRegistry;
 import com.minecolonies.api.research.IGlobalResearchTree;
 import net.minecraftforge.registries.IForgeRegistry;
 
@@ -52,26 +53,27 @@ public final class MinecoloniesAPIProxy implements IMinecoloniesAPI
     }
 
     @Override
-    public IMobAIRegistry getMobAIRegistry()
-    {
+    public IMobAIRegistry getMobAIRegistry() {
         return apiInstance.getMobAIRegistry();
     }
 
     @Override
-    public IPathNavigateRegistry getPathNavigateRegistry()
-    {
+    public IPathNavigateRegistry getPathNavigateRegistry() {
         return apiInstance.getPathNavigateRegistry();
     }
 
     @Override
-    public IBuildingDataManager getBuildingDataManager()
-    {
+    public IPathHandlingRegistry getPathHandlingRegistry() {
+        return apiInstance.getPathHandlingRegistry();
+    }
+
+    @Override
+    public IBuildingDataManager getBuildingDataManager() {
         return apiInstance.getBuildingDataManager();
     }
 
     @Override
-    public IForgeRegistry<BuildingEntry> getBuildingRegistry()
-    {
+    public IForgeRegistry<BuildingEntry> getBuildingRegistry() {
         return apiInstance.getBuildingRegistry();
     }
 
