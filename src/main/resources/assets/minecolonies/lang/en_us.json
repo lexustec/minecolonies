@@ -278,7 +278,7 @@
   "tile.blockhut.messagenotownhall": "You need to place a town hall first!",
 
   "block.blockhuttownhall.messagemaxSize": "%d has reached max size",
-  "block.blockhuttownhall.messagecolonistdead": "The colonist %s has died at %d %d %d of %s!",
+  "tile.blockhuttownhall.messagecolonistdead": "The colonist %s has died at %d %d %d of %s!",
   "block.blockhuttownhall.messageinvalidworld": "You can't place a town hall in this world type",
   "block.blockhuttownhall.messagetooclose": "Too close to existing town hall",
   "block.blockhuttownhall.messagetooclosetovillage": "Too close to existing village",

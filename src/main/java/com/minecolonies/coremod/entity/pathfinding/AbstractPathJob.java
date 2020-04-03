@@ -925,7 +925,7 @@ public abstract class AbstractPathJob implements Callable<Path>
         final VoxelShape bb = below.getCollisionShape(world, parent.pos.down());
         if (bb.getEnd(Direction.Axis.Y) < 1)
         {
-            double dif = bb.getEnd(Direction.Axis.Y);
+            double dif = bb.isEmpty() ? below.getMaterial().isLiquid() ? 0.5 : 0 : bb.getEnd(Direction.Axis.Y);
             final double parentY = target.getCollisionShape(world, pos).getEnd(Direction.Axis.Y);
             dif = 1 - dif + parentY;
             if (dif < MAX_JUMP_HEIGHT)
@@ -960,7 +960,7 @@ public abstract class AbstractPathJob implements Callable<Path>
             return true;
         }
 
-        if (parent != null)
+        if (parent != null && parent.pos.getY() < pos.getY())
         {
             final BlockState hereState = world.getBlockState(localPos.down());
             return hereState.getMaterial().isLiquid() && !isPassable(pos, false);
