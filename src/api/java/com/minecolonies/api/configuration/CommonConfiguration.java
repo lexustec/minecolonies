@@ -839,7 +839,7 @@ public class CommonConfiguration extends AbstractConfiguration
         swapToCategory(builder, "autoPathMaking");
 
         this.autoCreatePathsEnabled = defineBoolean(builder, "enabled", true);
-        this.maxTrackingAge = defineInteger(builder, "maxAge", 50000);
+        this.maxTrackingAge = defineInteger(builder, "maxAge", 1000, 500, 10000);
 
         finishCategory(builder);
     }
