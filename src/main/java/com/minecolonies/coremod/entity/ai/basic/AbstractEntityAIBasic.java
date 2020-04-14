@@ -1438,7 +1438,6 @@ public abstract class AbstractEntityAIBasic<J extends AbstractJob> extends Abstr
      *
      * @param pos       the position to transfer it from.
      * @param predicate the predicate to evaluate.
-     * @param stackInfo the actual stack of the predicate to get the needed value
      * @return true if succesful.
      */
 
