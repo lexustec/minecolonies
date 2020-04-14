@@ -27,6 +27,7 @@ import com.minecolonies.api.util.constant.IToolType;
 import com.minecolonies.api.util.constant.ToolType;
 import com.minecolonies.api.util.constant.TypeConstants;
 import com.minecolonies.coremod.colony.buildings.AbstractBuildingWorker;
+import com.minecolonies.coremod.colony.buildings.utils.BuildingBuilderResource;
 import com.minecolonies.coremod.colony.interactionhandling.PosBasedInteractionResponseHandler;
 import com.minecolonies.coremod.colony.interactionhandling.RequestBasedInteractionResponseHandler;
 import com.minecolonies.coremod.colony.interactionhandling.StandardInteractionResponseHandler;
@@ -122,6 +123,12 @@ public abstract class AbstractEntityAIBasic<J extends AbstractJob> extends Abstr
      * What he currently might be needing.
      */
     protected Tuple<Predicate<ItemStack>, Integer> needsCurrently = null;
+
+    /**
+     * What he currently might be needing but as full information.
+     * this is a wip workaround... to get Stack Count right
+     */
+    protected BuildingBuilderResource needsCurrentlyStack = null;
 
     /**
      * The current position the worker should walk to.
@@ -974,7 +981,7 @@ public abstract class AbstractEntityAIBasic<J extends AbstractJob> extends Abstr
     {
         if (!worker.isWorkerAtSiteWithMove(getOwnBuilding().getPosition(), DEFAULT_RANGE_FOR_DELAY))
         {
-            return INVENTORY_FULL;
+           return INVENTORY_FULL;
         }
 
         if (InventoryUtils.isProviderFull(getOwnBuilding()))
@@ -1070,7 +1077,8 @@ public abstract class AbstractEntityAIBasic<J extends AbstractJob> extends Abstr
 
         if (buildingWorker != null && !ItemStackUtils.isEmpty(stackToDump))
         {
-            final int amount = dumpAnyway ? stackToDump.getCount() : buildingWorker.buildingRequiresCertainAmountOfItem(stackToDump, alreadyKept, true);
+            final int amount = stackToDump.getCount();
+            //final int amount = dumpAnyway ? stackToDump.getCount() : buildingWorker.buildingRequiresCertainAmountOfItem(stackToDump, alreadyKept, true);
             if (amount > 0)
             {
                 final ItemStack activeStack = getInventory().extractItem(slotAt, amount, false);
@@ -1429,6 +1437,7 @@ public abstract class AbstractEntityAIBasic<J extends AbstractJob> extends Abstr
      *
      * @param pos       the position to transfer it from.
      * @param predicate the predicate to evaluate.
+     * @param stackInfo the actual stack of the predicate to get the needed value
      * @return true if succesful.
      */
 

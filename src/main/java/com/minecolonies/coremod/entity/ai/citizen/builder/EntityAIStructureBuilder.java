@@ -185,6 +185,8 @@ public class EntityAIStructureBuilder extends AbstractEntityAIStructureWithWorkO
         }
 
         needsCurrently = neededItemsList.get(pickUpCount);
+        needsCurrentlyStack = neededItemStackList.get(pickUpCount); // adding the stack too
+
         pickUpCount++;
 
         if (currentStructure == null)
