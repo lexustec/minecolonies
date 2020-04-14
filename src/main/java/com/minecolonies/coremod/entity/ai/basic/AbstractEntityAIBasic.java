@@ -983,7 +983,7 @@ public abstract class AbstractEntityAIBasic<J extends AbstractJob> extends Abstr
     {
         if (!worker.isWorkerAtSiteWithMove(getOwnBuilding().getPosition(), DEFAULT_RANGE_FOR_DELAY))
         {
-           return INVENTORY_FULL;
+            return INVENTORY_FULL;
         }
 
         if (InventoryUtils.isProviderFull(getOwnBuilding()))
