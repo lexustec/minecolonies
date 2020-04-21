@@ -27,6 +27,7 @@ import com.minecolonies.api.util.constant.IToolType;
 import com.minecolonies.api.util.constant.ToolType;
 import com.minecolonies.api.util.constant.TypeConstants;
 import com.minecolonies.coremod.colony.buildings.AbstractBuildingWorker;
+import com.minecolonies.coremod.colony.buildings.utils.BuildingBuilderResource;
 import com.minecolonies.coremod.colony.interactionhandling.PosBasedInteractionResponseHandler;
 import com.minecolonies.coremod.colony.interactionhandling.RequestBasedInteractionResponseHandler;
 import com.minecolonies.coremod.colony.interactionhandling.StandardInteractionResponseHandler;
@@ -46,7 +47,9 @@ import net.minecraft.util.Tuple;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.util.Tuple;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
+import net.minecraftforge.event.enchanting.EnchantmentLevelSetEvent;
 import net.minecraftforge.items.IItemHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -352,10 +355,10 @@ public abstract class AbstractEntityAIBasic<J extends AbstractJob> extends Abstr
      */
     protected boolean inventoryNeedsDump() {
         return getState() != INVENTORY_FULL &&
-                (worker.getCitizenInventoryHandler().isInventoryFull()
-                        || job.getActionsDone() >= getActionsDoneUntilDumping()
-                        || wantInventoryDumped())
-                && !(job instanceof JobDeliveryman);
+                 (worker.getCitizenInventoryHandler().isInventoryFull()
+                    || job.getActionsDone() >= getActionsDoneUntilDumping()
+                    || wantInventoryDumped())
+                 && !(job instanceof JobDeliveryman);
     }
 
     /**
